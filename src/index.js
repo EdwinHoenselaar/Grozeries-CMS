@@ -12,6 +12,7 @@ import ProductsListContainer from './components/Products/ProductsListContainer'
 import Orders from './components/Orders/OrdersContainer'
 
 import './index.css';
+import OrderDetailsContainer from './components/Orders/OrderDetailsContainer';
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route exact path="/store" component={Store} />
       <Route exact path="/products" component={ProductsListContainer} />
       <Route exact path="/orders" component={Orders} />
+      <Route exact path="/orders/:id" component={OrderDetailsContainer} />
     </Router>
   </Provider>,
   rootElement

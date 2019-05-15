@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
-import OrdersPage from './OrdersPage'
+import OrderDetailsPage from './OrderDetailsPage'
 
-export default class OrdersContainer extends Component {
+export default class OrderDetailsContainer extends Component {
+
   state = ({
     orders: [
       {
         orderId: 1,
         customer: 'Henk',
         totalPrice: 50,
-        orderlines: []
+        orderlines: [{
+          id: 1,
+          product: 'Strawberries',
+          quantitytype: 'weight',
+          pricePer: 2.99,
+          quantity: 10
+        }]
       },
       {
         orderId: 2,
@@ -42,11 +49,22 @@ export default class OrdersContainer extends Component {
       },
     ]
   })
+
+  
   render() {
+    const currentOrderId = this.props.match.params.id
+    console.log('render test order id ', currentOrderId)
+    const currentOrder = this.state.orders.find(order => {
+      console.log('inside map', order, currentOrderId)
+      return order.orderId === currentOrderId})
+    console.log('render test order ', currentOrder)
+    const OrderDetails = currentOrder &&
+      <OrderDetailsPage order={this.currentOrder}/>
+
     return (
-        <div className='orders'>
-            <OrdersPage orders={this.state.orders}/>
-        </div>
+      <div>
+        {OrderDetails}
+      </div>
     )
   }
 }

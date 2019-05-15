@@ -40,11 +40,14 @@ nav {
   display: flex;
 }
 
+.orders,
 .products {
   flex-direction: column;
 }
 
 .product-legend,
+.orders-legend,
+.orders-individual,
 .product-individual {
   display: flex;
   justify-content: space-evenly;
@@ -52,6 +55,7 @@ nav {
   flex-direction: row;
 }
 
+.orders-individual-text,
 .product-individual-text {
   flex: 1;
 }
@@ -74,6 +78,7 @@ nav {
   height: 100%;
 }
 
+.orders-legend-text,
 .product-legend-text {
   font-weight: 800;
   flex: 1;
