@@ -1,7 +1,5 @@
 body {
   display: flex;
-  justify-self: stretch;
-  width: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -16,6 +14,67 @@ code {
 }
 
 nav {
-  background-color: red;
-  width: 40%;
+  background-color: lightblue;
+  align-self: stretch;
+  align-content: stretch;
+  padding: 1rem;
+  flex: 1;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-self: stretch;
+  width: 100vw;
+  height: 100vh;
+  align-content: stretch;
+}
+
+.products,
+.orders,
+.inventory,
+.store {
+  flex: 3;
+  padding: 1rem;
+  display: flex;
+}
+
+.products {
+  flex-direction: column;
+}
+
+.product-legend,
+.product-individual {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-direction: row;
+}
+
+.product-individual-text {
+  flex: 1;
+}
+
+.sidebar-container {
+  height: 100vh;
+  justify-content: space-evenly;
+}
+
+.sidebar-items {
+  background-color: lightcoral;
+}
+
+.sidebar-username {
+  align-items: flex-end;
+  background-color: orange;
+}
+
+.page {
+  height: 100%;
+}
+
+.product-legend-text {
+  font-weight: 800;
+  flex: 1;
 }
