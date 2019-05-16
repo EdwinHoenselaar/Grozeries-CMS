@@ -7,7 +7,7 @@ import React from 'react';
 
 import Sidebar from './components/Sidebar/SidebarContainer'
 import Login from './components/Login/LoginContainer'
-import Store from './components/Store/StoreContainer'
+import Shops from './components/Shops/ShopsContainer'
 import ProductsListContainer from './components/Products/ProductsListContainer'
 import Orders from './components/Orders/OrdersContainer'
 
@@ -22,7 +22,7 @@ ReactDOM.render(
             <Sidebar />
         </nav>
       <Route exact path="/" component={Login} />
-      <Route exact path="/store" component={Store} />
+      <Route exact path="/shops" component={Shops} />
       <Route exact path="/products" component={ProductsListContainer} />
       <Route exact path="/orders" component={Orders} />
       <Route exact path="/orders/:id" component={OrderDetailsContainer} />

@@ -10,7 +10,7 @@ export default class SidebarContainer extends Component {
             <h1>Grozeries CMS</h1>
         </div>
         <div className='sidebar-items'>
-                <Link to='/store'><h4>store</h4></Link>
+                <Link to='/shops'><h4>shops</h4></Link>
                 <Link to='/products'><h4>products</h4></Link>
                 <Link to='/orders'><h4>orders</h4></Link>
         </div>
