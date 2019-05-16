@@ -1,33 +1,35 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Product from './Product';
 import Legend from './Legend'
+import ProductsListPage from './ProductsListPage'
+import { getShopProducts } from '../../actions/products/getShopProducts'
 
 class ProductsListContainer extends Component {
 
+  componentDidMount() {
+    this.props.getShopProducts(4)
+  }
   render() {
-    console.log('currentUser PLC ',this.props.currentUser)
     if (!this.props.currentUser) return <Redirect to='/' />
-
-    // temporary
-    const id = 1
+      
+    const productsListPage = 
+      this.props.shop &&
+      <ProductsListPage products={this.props.shop.products}/>
 
     return (
       <div className='products page'>
         <Legend />
-        <Link to={`/products/${id}`}><Product /></Link>
-        <Link to={`/products/${id}`}><Product /></Link>
-        <Link to={`/products/${id}`}><Product /></Link>
+        {productsListPage}
       </div>
     )
   }
 }
 
-const mapStateToProps = function (state) {
-	return {
-		currentUser: state.currentUser,
-	}
-}
+const mapStateToProps = state => ({
+  currentUser: state.currentUser,
+  shop: state.shop
+})
 
-export default connect(mapStateToProps)(ProductsListContainer)
+export default connect(mapStateToProps, { getShopProducts })(ProductsListContainer)

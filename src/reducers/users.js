@@ -2,26 +2,26 @@ import {USER_LOGOUT, ADD_USER, UPDATE_USER, UPDATE_USERS} from '../actions/auth/
 
 export default (state = null, {type, payload}) => {
   switch (type) {
-    case USER_LOGOUT:
-      return null
+    // case USER_LOGOUT:
+    //   return null
       
-    case ADD_USER:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
+    // case ADD_USER:
+    //   return {
+    //     ...state,
+    //     [payload.id]: payload
+    //   }
 
-    case UPDATE_USER:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
+    // case UPDATE_USER:
+    //   return {
+    //     ...state,
+    //     [payload.id]: payload
+    //   }
 
-    case UPDATE_USERS:
-      return payload.reduce((users, user) => {
-        users[user.id] = user
-        return users
-      }, {})
+    // case UPDATE_USERS:
+    //   return payload.reduce((users, user) => {
+    //     users[user.id] = user
+    //     return users
+    //   }, {})
 
     default:
       return state
