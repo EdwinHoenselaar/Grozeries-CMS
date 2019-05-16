@@ -20,22 +20,23 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div className="login-form">
-  			<form onSubmit={this.handleSubmit}>
-  				<label>
-            Email
-            <input type="email" name="email" value={
-  						this.state.email || ''
-  					} onChange={ this.handleChange } />
-          </label>
+  			<form className='login-form' onSubmit={this.handleSubmit}>
 
-  				<label>
-            Password
-            <input type="password" name="password" value={
-  						this.state.password || ''
-  					} onChange={ this.handleChange } />
-          </label>
+  				<label className='login-label'>
+                    Email
+                </label>
+                <input className='login-input' type="email" name="email" value={
+                                this.state.email || ''
+                            } onChange={ this.handleChange } />
 
-  				<button type="submit">Login</button>
+  				<label className='login-label'>
+                    Password
+                </label>
+                <input className='login-input' type="password" name="password" value={
+                                this.state.password || ''
+                            } onChange={ this.handleChange } />
+
+  				<button className='login-button' type="submit">Login</button>
   			</form>
 		  </div>
     )

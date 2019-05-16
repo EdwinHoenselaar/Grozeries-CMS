@@ -14,7 +14,7 @@ code {
 }
 
 nav {
-  background-color: rgb(238, 238, 238);
+  background-color: white;
   align-self: stretch;
   align-content: stretch;
   flex: 1;
@@ -31,6 +31,7 @@ nav {
 }
 
 .login,
+.register,
 .products,
 .orders,
 .inventory,
@@ -88,6 +89,7 @@ a {
 
 .sidebar-username {
   padding: 1rem;
+  background-color: rgb(241, 241, 241);
   align-items: flex-end;
 }
 
@@ -99,4 +101,46 @@ a {
 .product-legend-text {
   font-weight: 800;
   flex: 1;
+}
+
+.login-form {
+  width: 50vw;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input{
+  border: 0;
+  border-radius: 5px;
+  background-color: linen;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.login-label {
+  padding: 1rem;
+}
+
+.login-button {
+  padding: 1rem;
+  border: 0;
+  margin-top: 1rem;
+  font-weight: 600;
+  background-color: linen;
+  border-radius: 5px;
+}
+
+.login {
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 1rem;
+}
+
+.user-logout {
+  font-size: 0.7rem;
 }
