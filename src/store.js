@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./reducers";
+import { storeJwt } from './middleware'
+
 import ReduxThunk from "redux-thunk";
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -7,7 +9,7 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   : f => f;
 
 const enhancer = compose(
-  applyMiddleware(ReduxThunk),
+  applyMiddleware(ReduxThunk, storeJwt),
   devTools
 );
 
