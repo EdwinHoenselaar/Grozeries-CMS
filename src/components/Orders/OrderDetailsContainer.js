@@ -15,7 +15,22 @@ export default class OrderDetailsContainer extends Component {
           quantitytype: 'weight',
           pricePer: 2.99,
           quantity: 10
-        }]
+        },
+        {
+          id: 2,
+          product: 'Veggies',
+          quantitytype: 'weight',
+          pricePer: 5,
+          quantity: 1
+        },
+        {
+          id: 3,
+          product: 'Batteries',
+          quantitytype: 'piece',
+          pricePer: 4.99,
+          quantity: 2
+        },
+        ]
       },
       {
         orderId: 2,
@@ -55,7 +70,7 @@ export default class OrderDetailsContainer extends Component {
     const currentOrderId = this.props.match.params.id
     console.log('render test order id ', currentOrderId)
     const currentOrder = this.state.orders.find(order => {
-      console.log('inside map', order, currentOrderId)
+      console.log('inside find', order, currentOrderId)
       return order.orderId === currentOrderId})
     console.log('render test order ', currentOrder)
     const OrderDetails = currentOrder &&
