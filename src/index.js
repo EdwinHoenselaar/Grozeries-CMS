@@ -12,6 +12,7 @@ import ProductsListContainer from './components/Products/ProductsListContainer'
 import Orders from './components/Orders/OrdersContainer'
 
 import './index.css';
+import './toastr.css';
 import OrderDetailsContainer from './components/Orders/OrderDetailsContainer';
 
 const rootElement = document.getElementById('root')
