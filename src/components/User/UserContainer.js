@@ -4,7 +4,8 @@ export default class UserContainer extends Component {
   render() {
     return (
       <>
-        <h4>username</h4>
+        <h6>username</h6>
+        <h6>log out</h6>
       </>
     )
   }
