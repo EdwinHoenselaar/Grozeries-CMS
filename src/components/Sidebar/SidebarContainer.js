@@ -7,7 +7,7 @@ export default class SidebarContainer extends Component {
     return (
       <div className='sidebar-container'>
         <div className='sidebar-logo'>
-            <h1>Grozeries</h1>
+            <h1>Grozeries CMS</h1>
         </div>
         <div className='sidebar-items'>
                 <Link to='/store'><h4>store</h4></Link>
