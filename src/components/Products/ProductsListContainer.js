@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Product from './Product';
+import { connect } from 'react-redux'
 import Legend from './Legend'
+import ProductsListPage from './ProductsListPage'
+import { getShopProducts } from '../../actions/products/getShopProducts'
 
-export default class ProductsListContainer extends Component {
+class ProductsListContainer extends Component {
+  componentDidMount() {
+    this.props.getShopProducts(4)
+  }
   render() {
-
-    // temporary
-    const id = 1
-
+    const productsListPage = 
+      this.props.shop &&
+      <ProductsListPage products={this.props.shop.products}/>
     return (
       <div className='products page'>
         <Legend />
-        <Link to={`/products/${id}`}><Product /></Link>
-        <Link to={`/products/${id}`}><Product /></Link>
-        <Link to={`/products/${id}`}><Product /></Link>
+        {productsListPage}
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  shop: state.shop
+})
+
+export default connect(mapStateToProps, { getShopProducts })(ProductsListContainer)

@@ -1,11 +1,57 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getProduct } from '../../actions/products/getProduct'
+import { setUpdateProduct } from '../../actions/products/setUpdateProduct'
+import ProductDetailPage from './ProductsDetailPage'
 
-export default class ProductsDetailContainer extends Component {
+class ProductsDetailContainer extends Component {
+  componentDidMount() {
+    this.props.getProduct(this.props.match.params.id)
+  }
+  state = ({
+    product: null
+  })
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      product: {
+        ...props.product,
+        ...(state.product || {})
+      }
+    }
+  }
+
+  onChange = (event) => {
+    this.setState({
+      product: {
+        ...this.state.product,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.props.setUpdateProduct(this.state.product)
+  }
+
   render() {
+    const productDetailPage = 
+      this.props.product &&
+      <ProductDetailPage 
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state.product}/>
     return (
       <div className='products'>
-        <h1>detail container</h1>
+        {productDetailPage}
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  product: state.product
+})
+
+export default connect(mapStateToProps, { getProduct, setUpdateProduct })(ProductsDetailContainer)
