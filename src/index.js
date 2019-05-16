@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar/SidebarContainer'
 import Login from './components/Login/LoginContainer'
 import Shops from './components/Shops/ShopsContainer'
 import ProductsListContainer from './components/Products/ProductsListContainer'
+import ProductsDetailContainer from './components/Products/ProductsDetailContainer'
 import Orders from './components/Orders/OrdersContainer'
 
 import './index.css';
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route exact path="/" component={Login} />
       <Route exact path="/shops" component={Shops} />
       <Route exact path="/products" component={ProductsListContainer} />
+      <Route exact path="/products/:id" component={ProductsDetailContainer} />
       <Route exact path="/orders" component={Orders} />
       <Route exact path="/orders/:id" component={OrderDetailsContainer} />
     </Router>
