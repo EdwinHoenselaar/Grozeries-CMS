@@ -14,10 +14,9 @@ code {
 }
 
 nav {
-  background-color: lightblue;
+  background-color: rgb(238, 238, 238);
   align-self: stretch;
   align-content: stretch;
-  padding: 1rem;
   flex: 1;
 }
 
@@ -52,7 +51,17 @@ nav {
   flex-direction: row;
 }
 
+.product-individual {
+  border-bottom: 1px solid lightgray;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .product-individual-text {
+  font-weight: 400;
   flex: 1;
 }
 
@@ -61,13 +70,21 @@ nav {
   justify-content: space-evenly;
 }
 
+.sidebar-logo {
+  padding: 2rem;
+  height: 8vh;
+  color: white;
+  background-color: lightsalmon;
+}
+
 .sidebar-items {
-  background-color: lightcoral;
+  padding: 1rem;
+  background-color: none;
 }
 
 .sidebar-username {
+  padding: 1rem;
   align-items: flex-end;
-  background-color: orange;
 }
 
 .page {
