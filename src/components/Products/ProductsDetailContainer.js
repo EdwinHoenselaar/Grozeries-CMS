@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getProduct } from '../../actions/products/getProduct'
 import { setUpdateProduct } from '../../actions/products/setUpdateProduct'
@@ -36,12 +37,15 @@ class ProductsDetailContainer extends Component {
   }
 
   render() {
+    if (!this.props.currentUser) return <Redirect to='/' />
+
     const productDetailPage = 
       this.props.product &&
       <ProductDetailPage 
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state.product}/>
+
     return (
       <div className='products'>
         {productDetailPage}
