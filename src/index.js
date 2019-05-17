@@ -11,10 +11,11 @@ import Shops from './components/Shops/ShopsContainer'
 import ProductsListContainer from './components/Products/ProductsListContainer'
 import ProductsDetailContainer from './components/Products/ProductsDetailContainer'
 import Orders from './components/Orders/OrdersContainer'
+import CreateProductContainer from './components/Products/CreateProductContainer'
 
 import './index.css';
 import './toastr.css';
-import OrderDetailsContainer from './components/Orders/OrderDetailsContainer';
+import OrderDetailsContainer from './components/Orders/OrderDetailsContainer'
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
       <Route exact path="/shops" component={Shops} />
       <Route exact path="/products" component={ProductsListContainer} />
       <Route exact path="/products/:id" component={ProductsDetailContainer} />
+      <Route exact path="/products/create" component={CreateProductContainer} />
       <Route exact path="/orders" component={Orders} />
       <Route exact path="/orders/:id" component={OrderDetailsContainer} />
     </Router>

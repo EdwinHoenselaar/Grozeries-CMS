@@ -1,4 +1,5 @@
 import * as request from 'superagent'
+import { baseUrl } from '../../constants';
 
 export const SET_PRODUCT = 'SET_PRODUCT'
 
@@ -9,7 +10,7 @@ const setProduct = product => ({
 
 export const getProduct = (id) => (dispatch) => {
   request
-    .get(`http://grozeries.herokuapp.com/products/${id}`)
+    .get(`${baseUrl}/products/${id}`)
     .then(response => {
       dispatch(setProduct(response.body))
     })
