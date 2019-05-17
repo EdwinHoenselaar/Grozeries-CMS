@@ -41,6 +41,7 @@ class ProductsDetailContainer extends Component {
   }
 
   render() {
+    //commented out for dev purposes
     //if (!this.props.currentUser) return <Redirect to='/' />
 
     const productDetailPage = 
