@@ -9,7 +9,7 @@ const setProduct = product => ({
 
 export const getProduct = (id) => (dispatch) => {
   request
-    .get(`http://grozeries.herokuapp.com/products/${id}`)
+    .get(`/products/${id}`)
     .then(response => {
       dispatch(setProduct(response.body))
     })

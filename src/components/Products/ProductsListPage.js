@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Product(props) {
+export default function ProductListPage(props) {
   return (
     <div className='product page'>
       {

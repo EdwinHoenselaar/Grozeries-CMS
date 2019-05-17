@@ -12,7 +12,7 @@ class ProductsDetailContainer extends Component {
   state = ({
     product: null
   })
-
+  
   static getDerivedStateFromProps(props, state) {
     return {
       product: {
@@ -21,7 +21,7 @@ class ProductsDetailContainer extends Component {
       }
     }
   }
-
+  
   onChange = (event) => {
     this.setState({
       product: {
@@ -30,17 +30,18 @@ class ProductsDetailContainer extends Component {
       }
     })
   }
-
+  
   onSubmit = (event) => {
     event.preventDefault()
+    console.log('product ', this.state.product)
     this.props.setUpdateProduct(this.state.product)
   }
-
+  
   render() {
-    if (!this.props.currentUser) return <Redirect to='/' />
-
+    // if (!this.props.currentUser) return <Redirect to='/' />
+    
     const productDetailPage = 
-      this.props.product &&
+    this.props.product &&
       <ProductDetailPage 
         onSubmit={this.onSubmit}
         onChange={this.onChange}

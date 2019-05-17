@@ -8,14 +8,16 @@ const setProduct = product => ({
 })
 
 export const setUpdateProduct = (product) => (dispatch) => {
+  console.log('send check',product)
   request
-    .put(`http://grozeries.herokuapp.com/products/${product.id}`)
+    .put(`localhost:4000/products/${product.id}`)
+    // .put(`http://grozeries.herokuapp.com/products/${product.id}`)
     .send({
       product
     })
     .then(response => {
       console.log('setUpdateProduct' ,response)
-      // dispatch(setProduct(response.body))
+      dispatch(setProduct(response.body))
     })
     .catch(err => console.error(err))
 
