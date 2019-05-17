@@ -23,6 +23,7 @@ class SidebarContainer extends Component {
         <div className='sidebar-items'>
                 <Link to='/shops'><h4>shops</h4></Link>
                 <Link to='/products'><h4>products</h4></Link>
+                <Link to='/products/create'><h4>-- create new product</h4></Link>
                 <Link to='/orders'><h4>orders</h4></Link>
         </div>
       </div>
