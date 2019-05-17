@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Product from './Product';
 import Legend from './Legend'
 import ProductsListPage from './ProductsListPage'
 import { getShopProducts } from '../../actions/products/getShopProducts'

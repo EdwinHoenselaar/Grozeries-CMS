@@ -36,14 +36,19 @@ class ProductsDetailContainer extends Component {
     this.props.setUpdateProduct(this.state.product)
   }
 
+  setUrl = (url) => {
+    this.setState({product : { image : url} })
+  }
+
   render() {
-    if (!this.props.currentUser) return <Redirect to='/' />
+    //if (!this.props.currentUser) return <Redirect to='/' />
 
     const productDetailPage = 
       this.props.product &&
       <ProductDetailPage 
         onSubmit={this.onSubmit}
         onChange={this.onChange}
+        setUrl={this.setUrl}
         values={this.state.product}/>
 
     return (

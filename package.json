@@ -14,7 +14,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "superagent": "^5.0.5",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "uploadcare-widget": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",

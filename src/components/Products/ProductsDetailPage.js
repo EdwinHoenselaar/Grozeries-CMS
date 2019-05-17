@@ -1,6 +1,8 @@
 import React from 'react'
+import Uploader from '../Uploader/Uploader';
 
 export default function ProductsDetailPage(props) {
+
   return (
     <form type="submit" onSubmit={props.onSubmit}>
       <input 
@@ -43,7 +45,18 @@ export default function ProductsDetailPage(props) {
         name="in_stock"
         onChange={props.onChange}
         value={props.values.in_stock}
-      />      
+      />     
+      
+      <Uploader
+          id='file'
+          name='image'
+          onChange={(file) => {
+            if (file) {
+              file.done(info => props.setUrl(info.cdnUrl))
+            }
+          }}
+          />
+
       <button>submit</button>
     </form>
   )
