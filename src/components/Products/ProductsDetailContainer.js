@@ -37,7 +37,8 @@ class ProductsDetailContainer extends Component {
   }
 
   render() {
-    if (!this.props.currentUser) return <Redirect to='/' />
+    //commented out for dev purposes
+    //if (!this.props.currentUser) return <Redirect to='/' />
 
     const productDetailPage = 
       this.props.product &&

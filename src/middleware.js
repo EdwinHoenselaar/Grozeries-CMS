@@ -17,16 +17,3 @@ export const storeJwt = store => next => action => {
 
   next(action)
 }
-
-//not sure if well need this:
-
-// export const socketIo = socketio => store => next => action => {
-//   if (action.type === USER_LOGIN_SUCCESS) {
-//     const jwt = action.payload.jwt
-//     socketio.connect(store.dispatch, jwt)
-//   }
-//   if (action.type === USER_LOGOUT) {
-//     socketio.disconnect()
-//   }
-
-// }

@@ -9,6 +9,7 @@ class ProductsListContainer extends Component {
 
   componentDidMount() {
     this.props.getShopProducts(4)
+    console.log(localStorage.currentUserJwt)
   }
   render() {
     if (!this.props.currentUser) return <Redirect to='/' />
