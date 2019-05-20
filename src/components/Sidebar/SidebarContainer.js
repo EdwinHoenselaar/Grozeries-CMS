@@ -4,8 +4,7 @@ import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
 
-import { Icon } from "@blueprintjs/core";
-import { Avatar, Pill, Tablist, SidebarTab, TabNavigation } from 'evergreen-ui'
+import { Avatar, Pill, Tablist, Heading, SidebarTab, TabNavigation } from 'evergreen-ui'
 
 class SidebarContainer extends Component {
 
@@ -18,7 +17,7 @@ class SidebarContainer extends Component {
     return (
       <div className='sidebar-container'>
         <div className='sidebar-logo'>
-            <h1>Grozeries CMS</h1>
+            <Heading color='white' size={800}>Grozeries CMS</Heading>
         </div>
         <div className='sidebar-username'>
           <Avatar 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Legend from './Legend'
 import ProductsListPage from './ProductsListPage'
 import { getShopProducts } from '../../actions/products/getShopProducts'
 
@@ -20,7 +19,6 @@ class ProductsListContainer extends Component {
 
     return (
       <div className='products page'>
-        <Legend />
         {productsListPage}
       </div>
     )
