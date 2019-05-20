@@ -42,7 +42,7 @@ class CreateProductContainer extends Component {
       />
 
     return (
-      <div>
+      <div className='products page'>
         {productDetailPage}
       </div>
     )
