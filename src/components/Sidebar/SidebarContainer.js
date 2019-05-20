@@ -4,6 +4,8 @@ import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
 
+import { Icon } from "@blueprintjs/core";
+
 class SidebarContainer extends Component {
 
   handleSubmit = () => {
@@ -21,9 +23,9 @@ class SidebarContainer extends Component {
             <User onSubmit={this.props.logout} details={this.props.currentUser}/>
         </div>
         <div className='sidebar-items'>
-                <Link to='/shops'><h4>shops</h4></Link>
-                <Link to='/products'><h4>products</h4></Link>
-                <Link to='/orders'><h4>orders</h4></Link>
+                <Link to='/shops'><Icon icon="shop" color="muted" marginRight={16} /><h4>shops</h4></Link>
+                <Link to='/products'><Icon icon="barcode" color="muted" marginRight={16} /><h4>products</h4></Link>
+                <Link to='/orders'><Icon icon="box" color="muted" marginRight={16} /><h4>orders</h4></Link>
         </div>
       </div>
     )

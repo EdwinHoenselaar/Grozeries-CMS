@@ -2,22 +2,22 @@ import React from 'react'
 
 export default function StorePage(props) {
   return (
-    <div className='store page'>
+    <>
       {
         props.shops.map(shop => {
           return (
-            <div key={shop.id} >
-              <h4>{shop.shop_name}</h4>
-              <h4>{shop.street_name}</h4>
-              <h4>{shop.house_number}</h4>
-              <h4>{shop.zipcode}</h4>
-              <h4>{shop.city}</h4>
-              <h4>{shop.email}</h4>
-              <h4>{shop.phonenumber}</h4>
+            <div className='product-individual' key={shop.id} >
+              <h5 className='product-individual-text'>{shop.shop_name}</h5>
+              <h5 className='product-individual-text'>{shop.street_name}</h5>
+              <h5 className='product-individual-text'>{shop.house_number}</h5>
+              <h5 className='product-individual-text'>{shop.zipcode}</h5>
+              <h5 className='product-individual-text'>{shop.city}</h5>
+              <h5 className='product-individual-text'>{shop.email}</h5>
+              <h5 className='product-individual-text'>{shop.phonenumber}</h5>
             </div>
           )
         })
       }
-    </div>
+    </>
   )
 }
