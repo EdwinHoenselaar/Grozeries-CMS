@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import toastr from 'toastr'
+import { toaster } from 'evergreen-ui'
 
 export default class UserContainer extends Component {
 
 	handleSubmit = () => {
     this.props.onSubmit()
-    toastr.info('Logged out succesfully.')
+    toaster.notify('Logged out succesfully.')
 	}
 
 
