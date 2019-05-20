@@ -3,23 +3,24 @@ import { baseUrl } from '../../constants'
 import { logout } from '../auth/users'
 import { isExpired } from '../../jwt'
 
-export const SET_PRODUCT = 'SET_PRODUCT'
+export const ADD_PRODUCT = 'ADD_PRODUCT'
 
-const setProduct = product => ({
-  type: SET_PRODUCT,
+const addProduct = product => ({
+  type: ADD_PRODUCT,
   payload: product
 })
 
-export const setUpdateProduct = (product) => (dispatch, getState) => {
+export const createProduct = (shopId, product) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .put(`${baseUrl}/products/${product.id}`)
+    .post(`${baseUrl}/shops/${shopId}`)
     .set('Authorization', `Bearer ${jwt}`)
     .send(product)
     .then(response => {
-      dispatch(setProduct(response.body))
+      console.log('createProduct' ,response)
+      dispatch(addProduct(response.body))
     })
     .catch(err => console.error(err))
 }

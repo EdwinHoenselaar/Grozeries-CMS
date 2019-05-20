@@ -25,6 +25,7 @@ class SidebarContainer extends Component {
         <div className='sidebar-items'>
                 <Link to='/shops'><Icon icon="shop" color="muted" marginRight={16} /><h4>shops</h4></Link>
                 <Link to='/products'><Icon icon="barcode" color="muted" marginRight={16} /><h4>products</h4></Link>
+                <Link to='/products/create'><Icon icon="add" color="muted" marginRight={16} /><h4>add products</h4></Link>
                 <Link to='/orders'><Icon icon="box" color="muted" marginRight={16} /><h4>orders</h4></Link>
         </div>
       </div>
