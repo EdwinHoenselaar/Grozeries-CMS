@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Button, TextInputField } from 'evergreen-ui'
 export default class LoginPage extends Component {
 
     state = {}
@@ -22,21 +22,26 @@ export default class LoginPage extends Component {
       <div className="login-form">
   			<form className='login-form' onSubmit={this.handleSubmit}>
 
-  				<label className='login-label'>
-                    Email
-                </label>
-                <input className='login-input' type="email" name="email" value={
-                                this.state.email || ''
-                            } onChange={ this.handleChange } />
+          <TextInputField
+            label="Email"
+            name="email"
+            description="Enter your email adress."
+            placeholder="info@grozeries.nl"
+            value={ this.state.email || '' }
+            onChange={ this.handleChange }
+          />
 
-  				<label className='login-label'>
-                    Password
-                </label>
-                <input className='login-input' type="password" name="password" value={
-                                this.state.password || ''
-                            } onChange={ this.handleChange } />
+          <TextInputField
+            label="Password"
+            type='password'
+            name="password"
+            description="Enter your password."
+            placeholder="secretpassword"
+            value={ this.state.password || '' }
+            onChange={ this.handleChange }
+          />
 
-  				<button className='login-button' type="submit">Login</button>
+  				<Button appearance="primary" type="submit">Login</Button>
   			</form>
 		  </div>
     )

@@ -1,7 +1,7 @@
 import * as request from 'superagent'
 import {baseUrl} from '../../constants'
 import {isExpired} from '../../jwt'
-import toastr from 'toastr'
+import { toaster } from 'evergreen-ui'
 
 export const ADD_USER = 'ADD_USER'
 export const UPDATE_USER = 'UPDATE_USER'
@@ -49,7 +49,7 @@ export const login = (email, password) => (dispatch) =>
         .send({email, password})
         .then(result => {
             dispatch(userLoginSuccess(result.body))
-            toastr.success('Log in succesful.')
+            toaster.success('Log in succesful.')
         })
         .catch(err => {
             if (err.status === 400) {

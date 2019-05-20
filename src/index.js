@@ -14,7 +14,6 @@ import Orders from './components/Orders/OrdersContainer'
 import CreateProductContainer from './components/Products/CreateProductContainer'
 
 import './index.css';
-import './toastr.css';
 import OrderDetailsContainer from './components/Orders/OrderDetailsContainer'
 
 const rootElement = document.getElementById('root')
