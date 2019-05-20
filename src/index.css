@@ -39,6 +39,7 @@ nav {
   flex: 3;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
 }
 
 .orders,
