@@ -5,39 +5,40 @@ import { connect } from 'react-redux'
 
 class CreateProductContainer extends Component {
   state = ({
-    product: {
-      product_name: '',
-      description: '',
-      price: '',
-      ingredients: '',
-      allergens: '',
-      prices_by: '',
-      quantity: '',
-      in_stock: ''
-    }
+    product_name: '',
+    description: '',
+    price: '',
+    ingredients: '',
+    allergens: '',
+    prices_by: '',
+    quantity: '',
+    in_stock: '',
+    image: ''   
   })
 
   onChange = (event) => {
     this.setState({
-      product: {
-        ...this.state.product,
-        [event.target.name]: event.target.value
-      }
+      ...this.state,
+      [event.target.name]: event.target.value
     })
   }
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.createProduct(this.state.product)
+    this.props.createProduct(this.state)
   }
 
+  setUrl = (url) => {
+    this.setState({...this.state, image: url})
+  }
 
   render() {
     const productDetailPage = 
       <ProductDetailPage 
         onSubmit={this.onSubmit}
         onChange={this.onChange}
-        values={this.state.product}
+        setUrl={this.setUrl}
+        values={this.state}
       />
 
     return (
