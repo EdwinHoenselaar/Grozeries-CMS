@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
+import { getUser } from '../../actions/auth/users'
 
 import { Avatar, Pill, Tablist, Heading, SidebarTab, TabNavigation } from 'evergreen-ui'
 
 class SidebarContainer extends Component {
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.getUser(this.props.user.id)
+    }
+  }
 
   handleSubmit = () => {
 		this.props.logout()
   }
   
   render() {
-    if (!this.props.currentUser) return ''
+    if (!this.props.currentUser) return null
     return (
       <div className='sidebar-container'>
         <div className='sidebar-logo'>
@@ -22,11 +28,11 @@ class SidebarContainer extends Component {
         <div className='sidebar-username'>
           <Avatar 
             isSolid color="green" 
-            name={this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name} 
+            name={this.props.user.first_name + ' ' + this.props.user.last_name} 
             size={40} />
           <User 
             onSubmit={this.props.logout} 
-            details={this.props.currentUser}/>
+            details={this.props.user}/>
         </div>
 
         <TabNavigation marginX={10} marginBottom={16}>
@@ -59,8 +65,9 @@ class SidebarContainer extends Component {
 
 const mapStateToProps = function (state) {
 	return {
-		currentUser: state.currentUser,
+    currentUser: state.currentUser,
+    user: state.user
 	}
 }
 
-export default connect(mapStateToProps, { logout })(SidebarContainer)
+export default connect(mapStateToProps, { logout, getUser })(SidebarContainer)

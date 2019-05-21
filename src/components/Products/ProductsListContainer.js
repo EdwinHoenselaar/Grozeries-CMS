@@ -9,8 +9,8 @@ class ProductsListContainer extends Component {
   state = { isShown: false }
 
   componentDidMount() {
-    this.props.getShopProducts(4)
-    console.log('%cSTAR WARS: THE EMPIRE STRIKES BACK.', 'background: #222; color: #bada55; font-size: 40px;')
+    this.props.user &&
+    this.props.getShopProducts(this.props.user.shopId)
   }
   
   deleteButton() {
@@ -18,7 +18,7 @@ class ProductsListContainer extends Component {
   }
 
   render() {
-    if (!this.props.currentUser) return <Redirect to='/' />
+    // if (!this.props.currentUser) return <Redirect to='/' />
       
     const productsListPage = 
       this.props.shop &&
@@ -34,7 +34,8 @@ class ProductsListContainer extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  shop: state.shop
+  shop: state.shop,
+  user: state.user
 })
 
 export default connect(mapStateToProps, { getShopProducts })(ProductsListContainer)
