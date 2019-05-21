@@ -145,3 +145,12 @@ a {
 .user-logout {
   font-size: 0.7rem;
 }
+
+.add-product-row {
+  display: flex;
+}
+
+.add-product-row-individual {
+  background-color: none;
+  margin-right: 1rem;
+}
