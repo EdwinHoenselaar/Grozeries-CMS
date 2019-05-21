@@ -66,9 +66,9 @@ class ProductsDetailContainer extends Component {
         values={this.state.product}/>
 
     return (
-      <>
+      <div className="products page">
         {productDetailPage}
-      </>
+      </div>
     )
   }
 }

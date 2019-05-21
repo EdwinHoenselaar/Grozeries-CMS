@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
+import { getUser } from '../../actions/auth/users'
 
 import { Avatar, Pill, Tablist, Heading, SidebarTab, IconButton, TabNavigation, Text, toaster } from 'evergreen-ui'
 
 class SidebarContainer extends Component {
+  componentDidMount() {
+    if (this.props.currentUser.id) {
+      this.props.getUser(this.props.currentUser.id)
+    }
+  }
 
   handleSubmit = () => {
     this.props.logout()
@@ -14,23 +20,28 @@ class SidebarContainer extends Component {
   }
   
   render() {
-    if (!this.props.currentUser) return ''
+    if (!this.props.currentUser) return null
+
+    const avatar =
+      this.props.user &&
+        <div className='sidebar-username'>
+          <Avatar 
+            isSolid color="green" 
+            name={this.props.user.first_name + ' ' + this.props.user.last_name} 
+            size={40} />
+          <User 
+            onSubmit={this.props.logout} 
+            details={this.props.user}/>
+        </div>
+
+
     return (
       <div className='sidebar-container'>
-        <div className='sidebar-logo'>
+         <div className='sidebar-logo'>
             <Heading color='white' size={900}>Grozeries</Heading>
             <Text color='white' size={400}>Content Management</Text>
         </div>
-        <div className='sidebar-username'>
-          {(this.props.currentUser.first_name !== undefined) ? <Avatar 
-            isSolid color="green" 
-            name={this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name} 
-            size={40} /> : ' '}
-          <User 
-            onSubmit={this.props.logout} 
-            details={this.props.currentUser}/>
-        </div>
-
+        {avatar}
         <TabNavigation marginX={10} marginBottom={16}>
           <Tablist marginBottom={16} flexBasis={240} marginRight={0}>
             <Link to='/shops'>
@@ -56,8 +67,9 @@ class SidebarContainer extends Component {
 
 const mapStateToProps = function (state) {
 	return {
-		currentUser: state.currentUser,
+    currentUser: state.currentUser,
+    user: state.user
 	}
 }
 
-export default connect(mapStateToProps, { logout })(SidebarContainer)
+export default connect(mapStateToProps, { logout, getUser })(SidebarContainer)

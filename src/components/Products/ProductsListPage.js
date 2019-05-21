@@ -36,7 +36,7 @@ export default function Product(props) {
         </Table.Head>
         <Table.Body height={240}>
           {props.products.map(product => (
-            <Table.Row key={product.id} isSelectable >
+            <Link to={`/products/${product.id}`}><Table.Row key={product.id} isSelectable >
               <Table.TextCell flexGrow={2}>{product.product_name}</Table.TextCell>
               <Table.TextCell flexGrow={2}>{product.description}</Table.TextCell>
               <Table.TextCell flexGrow={0.5}>{product.price}</Table.TextCell>
@@ -45,7 +45,7 @@ export default function Product(props) {
               <Table.TextCell flexGrow={0.5}>{product.quantity}</Table.TextCell>
               <Table.TextCell flexGrow={0.5}>{product.in_stock === true ? <Badge color='green'>YES</Badge> : <Badge color='red'>NO</Badge>}</Table.TextCell>
               <Table.TextCell flexGrow={0.5}><Icon onClick={props.onDelete} icon='trash' /></Table.TextCell>
-            </Table.Row>
+            </Table.Row></Link>
           ))}
         </Table.Body>
       </Table>

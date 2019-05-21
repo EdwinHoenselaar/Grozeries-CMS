@@ -8,14 +8,18 @@ class ProductsListContainer extends Component {
 
   state = { isShown: false }
 
-  componentDidMount() {
-    this.props.getShopProducts(4)
-    console.log('%cAlbert says hi.', 'background: #222; color: #bada55; font-size: 20px;')
+  componentDidUpdate() {
+    this.props.currentUser.id &&
+    this.props.getShopProducts(this.props.user.shopId)
   }
-
+  
+  deleteButton() {
+    this.setState({ isShown: true })
+  }
+  
   render() {
-    if (!this.props.currentUser) return <Redirect to='/' />
-      
+    // if (!this.props.currentUser) return <Redirect to='/' />
+
     const productsListPage = 
       this.props.shop &&
       <ProductsListPage onDelete={this.deleteButton} products={this.props.shop.products}/>
@@ -30,7 +34,8 @@ class ProductsListContainer extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  shop: state.shop
+  shop: state.shop,
+  user: state.user
 })
 
 export default connect(mapStateToProps, { getShopProducts })(ProductsListContainer)
