@@ -1,11 +1,11 @@
-import { SET_SHOPS } from '../actions/shops/getShops'
+import { SET_ORDERS } from '../actions/orders/getShopOrders'
 
 export default (state = null, {type, payload}) => {
   switch (type) {
 
-    case SET_SHOPS:
+    case SET_ORDERS:
       return payload
-
+      
     default:
       return state
   }

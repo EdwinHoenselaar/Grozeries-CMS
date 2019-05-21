@@ -90,8 +90,8 @@ a {
 
 .sidebar-username {
   padding: 1rem;
-  background-color: rgb(241, 241, 241);
-  align-items: flex-end;
+  background-color: none;
+  display: flex;
 }
 
 .page {
@@ -140,6 +140,7 @@ a {
 
 .user-name {
   font-size: 1rem;
+  margin-left: 1rem;
 }
 
 .user-logout {
