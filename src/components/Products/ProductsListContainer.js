@@ -8,18 +8,18 @@ class ProductsListContainer extends Component {
 
   state = { isShown: false }
 
-  componentDidMount() {
-    this.props.user &&
+  componentDidUpdate() {
+    this.props.currentUser.id &&
     this.props.getShopProducts(this.props.user.shopId)
   }
   
   deleteButton() {
     this.setState({ isShown: true })
   }
-
+  
   render() {
     // if (!this.props.currentUser) return <Redirect to='/' />
-      
+
     const productsListPage = 
       this.props.shop &&
       <ProductsListPage onDelete={this.deleteButton} products={this.props.shop.products}/>

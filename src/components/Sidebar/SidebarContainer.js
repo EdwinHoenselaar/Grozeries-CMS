@@ -9,8 +9,8 @@ import { Avatar, Pill, Tablist, Heading, SidebarTab, TabNavigation } from 'everg
 
 class SidebarContainer extends Component {
   componentDidMount() {
-    if (this.props.user) {
-      this.props.getUser(this.props.user.id)
+    if (this.props.currentUser.id) {
+      this.props.getUser(this.props.currentUser.id)
     }
   }
 
@@ -20,11 +20,9 @@ class SidebarContainer extends Component {
   
   render() {
     if (!this.props.currentUser) return null
-    return (
-      <div className='sidebar-container'>
-        <div className='sidebar-logo'>
-            <Heading color='white' size={800}>Grozeries CMS</Heading>
-        </div>
+
+    const avatar =
+      this.props.user &&
         <div className='sidebar-username'>
           <Avatar 
             isSolid color="green" 
@@ -35,6 +33,13 @@ class SidebarContainer extends Component {
             details={this.props.user}/>
         </div>
 
+
+    return (
+      <div className='sidebar-container'>
+        <div className='sidebar-logo'>
+            <Heading color='white' size={800}>Grozeries CMS</Heading>
+        </div>
+        {avatar}
         <TabNavigation marginX={10} marginBottom={16}>
           <Tablist marginBottom={16} flexBasis={240} marginRight={0}>
             <Link to='/shops'>
