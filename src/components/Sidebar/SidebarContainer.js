@@ -4,12 +4,13 @@ import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
 
-import { Avatar, Pill, Tablist, Heading, SidebarTab, TabNavigation } from 'evergreen-ui'
+import { Avatar, Pill, Tablist, Heading, SidebarTab, IconButton, TabNavigation, Text, toaster } from 'evergreen-ui'
 
 class SidebarContainer extends Component {
 
   handleSubmit = () => {
-		this.props.logout()
+    this.props.logout()
+    toaster.notify('Logged out succesfully.')
   }
   
   render() {
@@ -17,13 +18,14 @@ class SidebarContainer extends Component {
     return (
       <div className='sidebar-container'>
         <div className='sidebar-logo'>
-            <Heading color='white' size={800}>Grozeries CMS</Heading>
+            <Heading color='white' size={900}>Grozeries</Heading>
+            <Text color='white' size={400}>Content Management</Text>
         </div>
         <div className='sidebar-username'>
-          <Avatar 
+          {(this.props.currentUser.first_name !== undefined) ? <Avatar 
             isSolid color="green" 
             name={this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name} 
-            size={40} />
+            size={40} /> : ' '}
           <User 
             onSubmit={this.props.logout} 
             details={this.props.currentUser}/>
@@ -46,12 +48,7 @@ class SidebarContainer extends Component {
           </Tablist>
         </TabNavigation>
 
-        {/* <div className='sidebar-items'>
-                <Link to='/shops'><Icon icon="shop" color="muted" marginRight={16} /><h4>shops</h4></Link>
-                <Link to='/products'><Icon icon="barcode" color="muted" marginRight={16} /><h4>products</h4></Link>
-                <Link to='/products/create'><Icon icon="add" color="muted" marginRight={16} /><h4>add products</h4></Link>
-                <Link to='/orders'><Icon icon="box" color="muted" marginRight={16} /><h4>orders</h4></Link>
-        </div> */}
+        <IconButton onClick={this.handleSubmit} marginLeft={16} icon="log-out"/>
       </div>
     )
   }

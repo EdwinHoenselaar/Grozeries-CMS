@@ -1,7 +1,17 @@
 import React from 'react'
 import Uploader from '../Uploader/Uploader';
 
-import { TextInputField, Label, Textarea, Select, Button } from 'evergreen-ui'
+import { 
+  TextInputField, 
+  Label, 
+  Textarea, 
+  Select, 
+  Button, 
+  SideSheet, 
+  Pane, 
+  Checkbox,
+  Heading,
+  Text } from 'evergreen-ui'
 
 export default function ProductsDetailPage(props) {
 
@@ -38,15 +48,77 @@ export default function ProductsDetailPage(props) {
         value={props.values.ingredients}
         placeholder="Sugar, wheat, yeast, water."
       />
-      <TextInputField
-        width="80%"
-        name="allergens"
-        label="Allergens"
-        hint='Enter allergens, comma separated if multiple.'
-        placeholder="Peanuts"
-        onChange={props.onChange}
-        value={props.values.allergens}
-      />
+
+      <SideSheet
+        isShown={props.isShown}
+        onCloseComplete={props.closeSideSheet}
+      >
+        <Pane padding={25}>
+          <Heading Heading size={900}>Allergens</Heading>
+          <Text size={500}>Please select allergens found in this product.</Text>
+          <Checkbox 
+            name='gluten' 
+            checked={props.values.allergenCollector.gluten}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)} 
+            label="Gluten" />
+          <Checkbox 
+            name='eggs' 
+            checked={props.values.allergenCollector.eggs}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Eggs" />
+          <Checkbox 
+            name='fish' 
+            checked={props.values.allergenCollector.fish}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Fish" />
+          <Checkbox 
+            name='peanuts' 
+            checked={props.values.allergenCollector.peanuts}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Peanuts" />
+          <Checkbox 
+            name='soybeans' 
+            checked={props.values.allergenCollector.soybeans}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Soybeans" />
+          <Checkbox 
+            name='lactose' 
+            checked={props.values.allergenCollector.lactose}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Lactose" />
+          <Checkbox 
+            name='nuts' 
+            checked={props.values.allergenCollector.nuts}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Nuts" />
+          <Checkbox 
+            name='celery' 
+            checked={props.values.allergenCollector.celery}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Celery" />
+          <Checkbox 
+            name='mustard' 
+            checked={props.values.allergenCollector.mustard}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Mustard" />
+          <Checkbox 
+            name='sesame' 
+            checked={props.values.allergenCollector.sesame}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)} 
+            label="Sesame" />
+          <Checkbox 
+            name='garlic' 
+            checked={props.values.allergenCollector.garlic}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Garlic" />
+          <Checkbox 
+            name='rice' 
+            checked={props.values.allergenCollector.rice}
+            onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
+            label="Rice" />
+        </Pane>
+      </SideSheet>
+
       <div className='add-product-row'>
         <div className='add-product-row-individual'>
           <Label
@@ -95,6 +167,18 @@ export default function ProductsDetailPage(props) {
             <option value={true}>yes</option>
             <option value={false}>no</option>
           </Select> 
+        </div>
+        <div className='add-product-row-individual'>
+          <Label
+              htmlFor="allergens"
+              marginBottom={4}
+              display="block"
+            >
+              Allergens
+            </Label>
+          <Button id='allergens' onClick={props.showSideSheet}>
+            Click to open
+          </Button>
         </div>
         <div className='add-product-row-individual'>
           <Label

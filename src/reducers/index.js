@@ -5,6 +5,7 @@ import users from './users'
 import login from './login'
 import currentUser from './currentUser'
 import product from './product'
+import orders from './orders'
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
     login,
     shops,
     shop,
-    product
+    product,
+    orders
 })
