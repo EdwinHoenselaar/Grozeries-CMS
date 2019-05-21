@@ -6,16 +6,23 @@ import { getShopProducts } from '../../actions/products/getShopProducts'
 
 class ProductsListContainer extends Component {
 
+  state = { isShown: false }
+
   componentDidMount() {
     this.props.getShopProducts(4)
-    console.log(localStorage.currentUserJwt)
+    console.log('%cSTAR WARS: THE EMPIRE STRIKES BACK.', 'background: #222; color: #bada55; font-size: 40px;')
   }
+  
+  deleteButton() {
+    this.setState({ isShown: true })
+  }
+
   render() {
     if (!this.props.currentUser) return <Redirect to='/' />
       
     const productsListPage = 
       this.props.shop &&
-      <ProductsListPage products={this.props.shop.products}/>
+      <ProductsListPage onDelete={this.deleteButton} products={this.props.shop.products}/>
 
     return (
       <div className='products page'>
