@@ -1,6 +1,6 @@
 //GAMESTARTER
-import {USER_LOGIN_SUCCESS, USER_LOGOUT} from './actions/auth/users'
-import {localStorageJwtKey} from './constants'
+import { USER_LOGIN_SUCCESS, USER_LOGOUT } from './actions/auth/users'
+import { localStorageJwtKey } from './constants'
 
 export const storeJwt = store => next => action => {
   try {

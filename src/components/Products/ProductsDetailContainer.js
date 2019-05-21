@@ -9,8 +9,10 @@ class ProductsDetailContainer extends Component {
   componentDidMount() {
     this.props.getProduct(this.props.match.params.id)
   }
+
   state = ({
-    product: null
+    product: null,
+    isShown: false
   })
 
   static getDerivedStateFromProps(props, state) {
@@ -40,6 +42,14 @@ class ProductsDetailContainer extends Component {
     this.setState({product : { image : url} })
   }
 
+  showSideSheet = (event) => {
+    this.setState({ isShown: true })
+  }
+
+  closeSideSheet = (event) => {
+    this.setState({ isShown: false })
+  }
+  
   render() {
     //commented out for dev purposes
     //if (!this.props.currentUser) return <Redirect to='/' />
@@ -47,6 +57,9 @@ class ProductsDetailContainer extends Component {
     const productDetailPage = 
       this.props.product &&
       <ProductDetailPage 
+        isShown={this.state.isShown}
+        showSideSheet={this.showSideSheet}
+        closeSideSheet={this.closeSideSheet}
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         setUrl={this.setUrl}

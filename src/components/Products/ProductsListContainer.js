@@ -10,11 +10,7 @@ class ProductsListContainer extends Component {
 
   componentDidMount() {
     this.props.getShopProducts(4)
-    console.log('%cSTAR WARS: THE EMPIRE STRIKES BACK.', 'background: #222; color: #bada55; font-size: 40px;')
-  }
-  
-  deleteButton() {
-    this.setState({ isShown: true })
+    console.log('%cAlbert says hi.', 'background: #222; color: #bada55; font-size: 20px;')
   }
 
   render() {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function OrdersPage(props) {
+  console.log('orders page: ',props)
   return (
     props.orders.map(order => {
       return (
