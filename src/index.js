@@ -27,7 +27,7 @@ ReactDOM.render(
       <Route exact path="/shops" component={Shops} />
       <Route exact path="/products" component={ProductsListContainer} />
       <Route exact path="/products/:id" component={ProductsDetailContainer} />
-      <Route exact path="/products/create" component={CreateProductContainer} />
+      <Route exact path="/product/create" component={CreateProductContainer} />
       <Route exact path="/orders" component={Orders} />
       <Route exact path="/orders/:id" component={OrderDetailsContainer} />
     </Router>

@@ -9,7 +9,8 @@ class ProductsListContainer extends Component {
   state = { isShown: false }
 
   componentDidUpdate() {
-    this.props.currentUser.id &&
+    this.props.user &&
+    !this.props.shop &&
     this.props.getShopProducts(this.props.user.shopId)
   }
   

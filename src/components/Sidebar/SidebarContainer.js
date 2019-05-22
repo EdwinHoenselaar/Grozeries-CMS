@@ -9,7 +9,7 @@ import { Avatar, Pill, Tablist, Heading, SidebarTab, IconButton, TabNavigation, 
 
 class SidebarContainer extends Component {
   componentDidMount() {
-    if (this.props.currentUser.id) {
+    if (this.props.currentUser) {
       this.props.getUser(this.props.currentUser.id)
     }
   }
@@ -50,7 +50,7 @@ class SidebarContainer extends Component {
             <Link to='/products'>
               <SidebarTab> 
                 Products</SidebarTab></Link>
-            <Link to='/products/create'>
+            <Link to='/product/create'>
               <SidebarTab>   
                 Add products</SidebarTab></Link>
             <Link to='/orders'>
