@@ -53,6 +53,8 @@ class ProductsDetailContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+    // try {this.submitAllergens() } 
+    // catch(error){console.log(error)}
     this.props.setUpdateProduct(this.state.product)
   }
 
@@ -67,6 +69,8 @@ class ProductsDetailContainer extends Component {
   }
 
   closeSideSheet = (event) => {
+    try {this.submitAllergens() } 
+    catch(error){console.log(error)}
     this.setState({ isShown: false })
   }
 
@@ -83,7 +87,7 @@ class ProductsDetailContainer extends Component {
       }
     }
     let databaseFormatter = allergy.join(', ').toString()
-    this.setState({ allergens : databaseFormatter })
+    this.setState({ product : { allergens : databaseFormatter }})
   }
 
   render() {
