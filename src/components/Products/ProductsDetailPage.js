@@ -58,62 +58,62 @@ export default function ProductsDetailPage(props) {
           <Text size={500}>Please select allergens found in this product.</Text>
           <Checkbox 
             name='gluten' 
-            checked={props.values.allergenCollector.gluten}
+            checked={props.allergenCollector.gluten}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)} 
             label="Gluten" />
           <Checkbox 
             name='eggs' 
-            checked={props.values.allergenCollector.eggs}
+            checked={props.allergenCollector.eggs}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Eggs" />
           <Checkbox 
             name='fish' 
-            checked={props.values.allergenCollector.fish}
+            checked={props.allergenCollector.fish}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Fish" />
           <Checkbox 
             name='peanuts' 
-            checked={props.values.allergenCollector.peanuts}
+            checked={props.allergenCollector.peanuts}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Peanuts" />
           <Checkbox 
             name='soybeans' 
-            checked={props.values.allergenCollector.soybeans}
+            checked={props.allergenCollector.soybeans}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Soybeans" />
           <Checkbox 
             name='lactose' 
-            checked={props.values.allergenCollector.lactose}
+            checked={props.allergenCollector.lactose}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Lactose" />
           <Checkbox 
             name='nuts' 
-            checked={props.values.allergenCollector.nuts}
+            checked={props.allergenCollector.nuts}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Nuts" />
           <Checkbox 
             name='celery' 
-            checked={props.values.allergenCollector.celery}
+            checked={props.allergenCollector.celery}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Celery" />
           <Checkbox 
             name='mustard' 
-            checked={props.values.allergenCollector.mustard}
+            checked={props.allergenCollector.mustard}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Mustard" />
           <Checkbox 
             name='sesame' 
-            checked={props.values.allergenCollector.sesame}
+            checked={props.allergenCollector.sesame}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)} 
             label="Sesame" />
           <Checkbox 
             name='garlic' 
-            checked={props.values.allergenCollector.garlic}
+            checked={props.allergenCollector.garlic}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Garlic" />
           <Checkbox 
             name='rice' 
-            checked={props.values.allergenCollector.rice}
+            checked={props.allergenCollector.rice}
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Rice" />
         </Pane>

@@ -2,7 +2,7 @@ import * as request from 'superagent'
 import { baseUrl } from '../../constants'
 import { logout } from '../auth/users'
 import { isExpired } from '../../jwt'
-import toastr from 'toastr'
+import { toaster } from 'evergreen-ui'
 
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 
@@ -20,8 +20,7 @@ export const createProduct = (shopId, product) => (dispatch, getState) => {
     .set('Authorization', `Bearer ${jwt}`)
     .send(product)
     .then(response => {
-      console.log('toaster test ', response)
-      response.status === 201 ? toastr.success('Product succesfully created') : toastr.error('Something went wrong, product is not updated')
+      response.status === 201 ? toaster.success('Product succesfully created') : toaster.warning('Something went wrong, product is not created')
       dispatch(addProduct(response.body))
     })
     .catch(err => console.error(err))

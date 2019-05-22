@@ -10,9 +10,27 @@ class ProductsDetailContainer extends Component {
     this.props.getProduct(this.props.match.params.id)
   }
 
+  //objectify the string with allergens
+  setAllergens() {
+    const allergens = this.state.product.allergens
+
+    const table =
+    allergens.split(', ') 
+      .map(pair => pair.split(':'));
+
+    const result = {};
+    table.forEach(([key]) => result[key] = true);
+
+    this.setState({ ...this.state.allergenCollector, allergenCollector : result })
+    this.setState({ allergensCollected: true })
+  }
+  //
+
   state = ({
     product: null,
     isShown: false,
+    allergenCollector: {},
+    allergensCollected: false
   })
 
   static getDerivedStateFromProps(props, state) {
@@ -35,6 +53,8 @@ class ProductsDetailContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+    // try {this.submitAllergens() } 
+    // catch(error){console.log(error)}
     this.props.setUpdateProduct(this.state.product)
   }
 
@@ -43,18 +63,33 @@ class ProductsDetailContainer extends Component {
   }
 
   showSideSheet = (event) => {
+    event.preventDefault()
+    if (!this.state.allergensCollected) this.setAllergens();
     this.setState({ isShown: true })
   }
 
   closeSideSheet = (event) => {
+    try {this.submitAllergens() } 
+    catch(error){console.log(error)}
     this.setState({ isShown: false })
   }
 
-  // checkAllergen = (checked, allergen) => {
-  //   console.log('cA-Fn: ',checked, allergen)
-  //   this.setState({ allergenCollector : { ...this.state.allergenCollector, [allergen] : checked }})
-  // }
-  
+  checkAllergen = (checked, allergen) => {
+    console.log('cA-Fn: ',checked, allergen)
+    this.setState({ allergenCollector : { ...this.state.allergenCollector, [allergen] : checked }})
+  }
+
+  submitAllergens = () => {
+    let allergy = []
+    for (let i = 0; i < Object.keys(this.state.allergenCollector).length; i++) {
+      if (Object.values(this.state.allergenCollector)[i] === true) {
+        allergy.push(Object.keys(this.state.allergenCollector)[i])
+      }
+    }
+    let databaseFormatter = allergy.join(', ').toString()
+    this.setState({ product : { allergens : databaseFormatter }})
+  }
+
   render() {
     //commented out for dev purposes
     //if (!this.props.currentUser) return <Redirect to='/' />
@@ -62,13 +97,14 @@ class ProductsDetailContainer extends Component {
     const productDetailPage = 
       this.props.product &&
       <ProductDetailPage
-        // checkAllergen={this.checkAllergen}
+        checkAllergen={this.checkAllergen}
         isShown={this.state.isShown}
         showSideSheet={this.showSideSheet}
         closeSideSheet={this.closeSideSheet}
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         setUrl={this.setUrl}
+        allergenCollector={this.state.allergenCollector}
         values={this.state.product}/>
 
     return (

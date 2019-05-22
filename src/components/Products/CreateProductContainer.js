@@ -37,6 +37,7 @@ class CreateProductContainer extends Component {
   }
 
   showSideSheet = (event) => {
+    event.preventDefault()
     this.setState({ isShown: true })
   }
 
@@ -45,7 +46,6 @@ class CreateProductContainer extends Component {
   }
 
   checkAllergen = (checked, allergen) => {
-    console.log('cA-Fn: ',checked, allergen)
     this.setState({ allergenCollector : { ...this.state.allergenCollector, [allergen] : checked }})
   }
 
@@ -70,6 +70,7 @@ class CreateProductContainer extends Component {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         setUrl={this.setUrl}
+        allergenCollector={this.state.allergenCollector}
         values={this.state}
       />
 
