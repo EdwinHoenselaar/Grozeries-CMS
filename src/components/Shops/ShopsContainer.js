@@ -4,8 +4,10 @@ import { getShops } from '../../actions/shops/getShops'
 import ShopsPage from './ShopsPage';
 
 class ShopsContainer extends Component {
-  componentDidMount() {
-    this.props.getShops()
+  componentDidUpdate() {
+    this.props.user &&
+    !this.props.shop &&
+    this.props.getShopProducts(this.props.user.shopId)
   }
 
   render() {
