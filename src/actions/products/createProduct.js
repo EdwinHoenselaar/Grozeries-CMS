@@ -11,16 +11,17 @@ const addProduct = product => ({
   payload: product
 })
 
-export const createProduct = (product) => (dispatch, getState) => {
+export const createProduct = (shopId, product) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .post(`${baseUrl}/shops/1`)
+    .post(`${baseUrl}/shops/${shopId}`)
     .set('Authorization', `Bearer ${jwt}`)
     .send(product)
     .then(response => {
-      response.status === 200 ? toastr.success('Product succesfully updated') : toastr.error('Something went wrong, product is not updated')
+      console.log('toaster test ', response)
+      response.status === 201 ? toastr.success('Product succesfully created') : toastr.error('Something went wrong, product is not updated')
       dispatch(addProduct(response.body))
     })
     .catch(err => console.error(err))
