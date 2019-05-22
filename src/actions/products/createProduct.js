@@ -11,12 +11,12 @@ const addProduct = product => ({
   payload: product
 })
 
-export const createProduct = (product) => (dispatch, getState) => {
+export const createProduct = (shopId, product) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .post(`${baseUrl}/shops/1`)
+    .post(`${baseUrl}/shops/${shopId}`)
     .set('Authorization', `Bearer ${jwt}`)
     .send(product)
     .then(response => {

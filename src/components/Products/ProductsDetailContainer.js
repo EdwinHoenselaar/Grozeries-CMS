@@ -96,7 +96,7 @@ class ProductsDetailContainer extends Component {
 
     const productDetailPage = 
       this.props.product &&
-      <ProductDetailPage 
+      <ProductDetailPage
         checkAllergen={this.checkAllergen}
         isShown={this.state.isShown}
         showSideSheet={this.showSideSheet}

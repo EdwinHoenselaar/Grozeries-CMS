@@ -29,7 +29,7 @@ class CreateProductContainer extends Component {
     event.preventDefault()
     try {this.submitAllergens() } 
     catch(error){console.log(error)}
-    this.props.createProduct(this.state)
+    this.props.createProduct(this.props.shop.id, this.state)
   }
 
   setUrl = (url) => {

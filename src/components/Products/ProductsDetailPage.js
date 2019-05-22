@@ -49,7 +49,7 @@ export default function ProductsDetailPage(props) {
         placeholder="Sugar, wheat, yeast, water."
       />
 
-      <SideSheet
+      {/* <SideSheet
         isShown={props.isShown}
         onCloseComplete={props.closeSideSheet}
       >
@@ -117,7 +117,7 @@ export default function ProductsDetailPage(props) {
             onChange={(e) => props.checkAllergen(e.target.checked, e.target.name)}
             label="Rice" />
         </Pane>
-      </SideSheet>
+      </SideSheet> */}
 
       <div className='add-product-row'>
         <div className='add-product-row-individual'>

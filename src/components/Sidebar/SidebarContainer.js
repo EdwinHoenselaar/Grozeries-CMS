@@ -4,6 +4,7 @@ import { logout } from '../../actions/auth/users'
 import { connect } from 'react-redux'
 import User from '../User/UserContainer'
 import { getUser } from '../../actions/auth/users'
+import { getShopProducts } from '../../actions/products/getShopProducts'
 
 import { Avatar, Pill, Tablist, Heading, SidebarTab, IconButton, TabNavigation, Text, toaster } from 'evergreen-ui'
 
@@ -12,6 +13,12 @@ class SidebarContainer extends Component {
     if (this.props.currentUser) {
       this.props.getUser(this.props.currentUser.id)
     }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    nextProps.user.shopId &&
+      this.props.getShopProducts(nextProps.user.shopId)
+    
   }
 
   handleSubmit = () => {
@@ -72,4 +79,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, { logout, getUser })(SidebarContainer)
+export default connect(mapStateToProps, { logout, getUser, getShopProducts })(SidebarContainer)
