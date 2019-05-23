@@ -34,7 +34,7 @@ export default function Product(props) {
             Delete
           </Table.TextHeaderCell>
         </Table.Head>
-        <Table.Body height={240}>
+        <Table.Body height='auto'>
           {props.products.map(product => (
             <Link to={`/products/${product.id}`}><Table.Row key={product.id} isSelectable >
               <Table.TextCell flexGrow={2}>{product.product_name}</Table.TextCell>

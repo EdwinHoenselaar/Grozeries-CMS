@@ -15,8 +15,25 @@ class CreateProductContainer extends Component {
     in_stock: '',
     image: '',
     isShown: false,
-    allergenCollector: {}
+    allergenCollector: {},
+    allergensCollected: false
   })
+
+    //objectify the string with allergens
+    setAllergens() {
+      const allergens = this.state.allergens
+  
+      const table =
+      allergens.split(', ') 
+        .map(pair => pair.split(':'));
+  
+      const result = {};
+      table.forEach(([key]) => result[key] = true);
+  
+      this.setState({ ...this.state.allergenCollector, allergenCollector : result })
+      this.setState({ allergensCollected: true })
+    }
+    //
 
   onChange = (event) => {
     this.setState({
@@ -27,8 +44,15 @@ class CreateProductContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    try {this.submitAllergens() } 
-    catch(error){console.log(error)}
+    console.log('submit state: ',this.state)
+    // try {this.submitAllergens() } 
+    // catch(error){console.log(error)}
+
+    //delete stuff for post request.
+    delete this.state.allergenCollector;
+    delete this.state.isShown;
+    delete this.state.allergensCollected;
+
     this.props.createProduct(this.props.shop.id, this.state)
   }
 
@@ -38,14 +62,18 @@ class CreateProductContainer extends Component {
 
   showSideSheet = (event) => {
     event.preventDefault()
+    if (!this.state.allergensCollected) this.setAllergens();
     this.setState({ isShown: true })
   }
 
   closeSideSheet = (event) => {
+    try {this.submitAllergens() } 
+    catch(error){console.log(error)}
     this.setState({ isShown: false })
   }
 
   checkAllergen = (checked, allergen) => {
+    console.log('cA-Fn: ',checked, allergen)
     this.setState({ allergenCollector : { ...this.state.allergenCollector, [allergen] : checked }})
   }
 
