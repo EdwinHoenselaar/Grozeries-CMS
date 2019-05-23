@@ -16,7 +16,7 @@ class SidebarContainer extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    nextProps.user.shopId &&
+    nextProps.user &&
       this.props.getShopProducts(nextProps.user.shopId)
     
   }
