@@ -10,7 +10,7 @@ import Login from './components/Login/LoginContainer'
 import Shop from './components/Shops/ShopDetailContainer'
 import ProductsListContainer from './components/Products/ProductsListContainer'
 import ProductsDetailContainer from './components/Products/ProductsDetailContainer'
-import Orders from './components/Orders/OrdersContainer'
+import OrdersContainer from './components/Orders/OrdersContainer'
 import CreateProductContainer from './components/Products/CreateProductContainer'
 
 import './index.css';
@@ -28,7 +28,7 @@ ReactDOM.render(
       <Route exact path="/products" component={ProductsListContainer} />
       <Route exact path="/products/:id" component={ProductsDetailContainer} />
       <Route exact path="/product/create" component={CreateProductContainer} />
-      <Route exact path="/orders" component={Orders} />
+      <Route exact path="/orders" component={OrdersContainer} />
       <Route exact path="/orders/:id" component={OrderDetailsContainer} />
     </Router>
   </Provider>,

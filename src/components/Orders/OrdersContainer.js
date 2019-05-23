@@ -5,17 +5,21 @@ import { getShopOrders } from '../../actions/orders/getShopOrders'
 
 
 class OrdersContainer extends Component {
-  
-  componentDidMount() {
-    this.props.getShopOrders(1)
-    console.log('%cGET ORDERS', 'background: blue; color: white; font-size: 40px;')
+
+  componentWillUpdate() {
+    this.props.user &&
+    !this.props.orders &&
+    this.props.getShopOrders(this.props.user.shopId)
   }
 
   render() {
-    console.log('%cOrders Container','background-color: red; color: white;', this.props)
+    const ordersPage =
+      this.props.orders &&
+      <OrdersPage orders={this.props.orders}/>
+
     return (
         <div className='orders'>
-            {/* <OrdersPage orders={this.props.orders}/> */}
+          {ordersPage}
         </div>
     )
   }
@@ -24,7 +28,8 @@ class OrdersContainer extends Component {
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   shop: state.shop,
-  orders: state.orders
+  orders: state.orders,
+  user: state.user
 })
 
 export default connect(mapStateToProps, { getShopOrders })(OrdersContainer)

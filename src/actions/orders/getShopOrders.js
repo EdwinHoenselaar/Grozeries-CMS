@@ -2,10 +2,10 @@ import * as request from 'superagent'
 import { logout } from '../auth/users'
 import { isExpired } from '../../jwt'
 
-export const SET_ORDERS = 'SET_ORDERS'
+export const SET_ORDERLINES = 'SET_ORDERLINES'
 
-const setOrders = orders => ({
-  type: SET_ORDERS,
+const setOrderlines = orders => ({
+  type: SET_ORDERLINES,
   payload: orders
 })
 
@@ -13,15 +13,14 @@ export const getShopOrders = (id) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
+  console.log('getShopOrders', id)
   request
-    .get(`http://grozeries.herokuapp.com/orders/${id}`)
+    .get(`http://grozeries.herokuapp.com/shops/${id}/orderlines`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
       console.log('gSO: ',response.body)
-      dispatch(setOrders(response.body))
+      dispatch(setOrderlines(response.body))
     })
     .catch(err => console.error(err))
 
 }
-
-// .get(`http://grozeries.herokuapp.com/orders/${id}`)

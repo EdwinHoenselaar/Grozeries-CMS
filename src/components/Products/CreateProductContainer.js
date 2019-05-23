@@ -44,16 +44,18 @@ class CreateProductContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    console.log('submit state: ',this.state)
-    // try {this.submitAllergens() } 
-    // catch(error){console.log(error)}
-
-    //delete stuff for post request.
-    delete this.state.allergenCollector;
-    delete this.state.isShown;
-    delete this.state.allergensCollected;
-
-    this.props.createProduct(this.props.shop.id, this.state)
+    const newProduct = {
+      product_name: this.state.product_name,
+      description: this.state.description,
+      price: this.state.price,
+      ingredients: this.state.ingredients,
+      allergens: this.state.allergens,
+      prices_by: this.state.prices_by,
+      quantity: this.state.quantity,
+      in_stock: this.state.in_stock,
+      image: this.state.image
+    }
+    this.props.createProduct(this.props.shop.id, newProduct)
   }
 
   setUrl = (url) => {
@@ -111,7 +113,8 @@ class CreateProductContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  shop: state.shop && state.shop
+  shop: state.shop && state.shop,
+  user: state.user && state.user
 })
 
 export default connect(mapStateToProps, { createProduct })(CreateProductContainer)

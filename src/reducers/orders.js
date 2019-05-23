@@ -1,9 +1,9 @@
-import { SET_ORDERS } from '../actions/orders/getShopOrders'
+import { SET_ORDERLINES } from '../actions/orders/getShopOrders'
 
 export default (state = null, {type, payload}) => {
   switch (type) {
 
-    case SET_ORDERS:
+    case SET_ORDERLINES:
       return payload
       
     default:
