@@ -9,21 +9,14 @@ class ProductsListContainer extends Component {
 
   state = { isShown: false }
 
-//   componentDidUpdate() {
-//     this.props.user &&
-//     !this.props.shop &&
-//     this.props.getShopProducts(this.props.user.shopId)
-//   }
-
-  
   deleteButton() {
     this.setState({ isShown: true })
   }
 
   componentDidMount() {
     this.props.currentUser &&
-      !this.props.user &&
-      this.props.getUser(this.props.currentUser.id)
+    !this.props.user &&
+    this.props.getUser(this.props.currentUser.id)
   }  
   
   render() {
