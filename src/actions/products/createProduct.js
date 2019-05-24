@@ -15,6 +15,8 @@ export const createProduct = (shopId, product) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
+  console.log('createproduct action', product)
+  console.log('jwt test', jwt)
   request
     .post(`${baseUrl}/shops/${shopId}`)
     .set('Authorization', `Bearer ${jwt}`)

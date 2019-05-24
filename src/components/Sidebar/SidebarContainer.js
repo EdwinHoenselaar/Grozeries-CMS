@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import User from '../User/UserContainer'
 import { getUser } from '../../actions/auth/users'
 import { getShopProducts } from '../../actions/products/getShopProducts'
+import { getShopOrders } from '../../actions/orders/getShopOrders'
 
 import { Avatar, Pill, Tablist, Heading, SidebarTab, IconButton, TabNavigation, Text, toaster } from 'evergreen-ui'
 
@@ -17,8 +18,11 @@ class SidebarContainer extends Component {
 
   componentWillUpdate(nextProps, nextState) {
     nextProps.user &&
+    !nextProps.shop &&
       this.props.getShopProducts(nextProps.user.shopId)
-    
+    nextProps.shop &&
+    !nextProps.orders &&
+      this.props.getShopOrders(nextProps.shop.id)
   }
 
   handleSubmit = () => {
@@ -28,7 +32,8 @@ class SidebarContainer extends Component {
   
   render() {
     if (!this.props.currentUser) return null
-
+    let pillValue = 0
+    this.props.orders ? pillValue = this.props.orders.filter(order => order.status === 'pending').length : pillValue = 0
     const avatar =
       this.props.user &&
         <div className='sidebar-username'>
@@ -62,7 +67,7 @@ class SidebarContainer extends Component {
                 Add products</SidebarTab></Link>
             <Link to='/orders'>
               <SidebarTab>  
-                Orders<Pill color="red" display="inline-flex" margin={8}>4</Pill></SidebarTab></Link>
+                Orders<Pill color="red" display="inline-flex" margin={8}>{pillValue}</Pill></SidebarTab></Link>
           </Tablist>
         </TabNavigation>
 
@@ -75,8 +80,10 @@ class SidebarContainer extends Component {
 const mapStateToProps = function (state) {
 	return {
     currentUser: state.currentUser,
-    user: state.user
+    user: state.user,
+    orders: state.orders,
+    shop: state.shop
 	}
 }
 
-export default connect(mapStateToProps, { logout, getUser, getShopProducts })(SidebarContainer)
+export default connect(mapStateToProps, { logout, getUser, getShopProducts, getShopOrders })(SidebarContainer)
