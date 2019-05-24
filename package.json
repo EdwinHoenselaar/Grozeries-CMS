@@ -5,8 +5,12 @@
   "dependencies": {
     "@blueprintjs/core": "^3.15.1",
     "@blueprintjs/icons": "^3.8.0",
+    "bluebird": "^3.5.4",
     "evergreen-ui": "^4.15.0",
+    "js-sha256": "^0.9.0",
     "jsonwebtoken": "^8.5.1",
+    "q": "^1.5.1",
+    "qz-tray": "^2.0.9-1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -16,9 +20,12 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "rsvp": "^4.8.4",
+    "sha": "^3.0.0",
     "superagent": "^5.0.5",
     "toastr": "^2.1.4",
-    "uploadcare-widget": "^3.7.5"
+    "uploadcare-widget": "^3.7.5",
+    "ws": "^7.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
