@@ -13,11 +13,9 @@ class OrdersContainer extends Component {
     this.props.getShopOrders(this.props.user.shopId)
   }
 
-  // onClick= () => {
-  //   const htmlList = document.getElementsByClassName("orderline-status")
-  //   const array = Object.entries(htmlList)
-  //   console.log("onclick", array)
-  // }
+  onClick= () => {
+    window.location.reload()
+  }
 
   state = ({
     orders: null
@@ -25,9 +23,7 @@ class OrdersContainer extends Component {
 
   onChange = (event) => {
     event.preventDefault()
-    console.log('onchange', event.target.value)
-    const statusUpdate = { status: event.target.value}
-    console.log('onchange', event.target.name)
+    const statusUpdate = {status: event.target.value}
     this.props.updateOrderline(event.target.name, statusUpdate)
   }
 
