@@ -12,9 +12,9 @@ qz.websocket.connect().then(function() {
     let config = qz.configs.create(printer);       // Create a default config for the found printer
     let data = [
         'Grozeries Delivery\n',
-        'Albert\n',
-        'Otto Copesstraat 34a\n',
-        '5213GM  Den Bosch\n'
+        'Persons Name\n',
+        'Redacted 34\n',
+        'Postcode  Cityname\n'
     ]
     return qz.print(config, data);
 }).catch(function(e) { console.error(e); });
