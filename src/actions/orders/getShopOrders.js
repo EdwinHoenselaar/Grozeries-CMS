@@ -1,6 +1,7 @@
 import * as request from 'superagent'
 import { logout } from '../auth/users'
 import { isExpired } from '../../jwt'
+import {baseUrl} from '../../constants'
 
 export const SET_ORDERLINES = 'SET_ORDERLINES'
 
@@ -15,7 +16,7 @@ export const getShopOrders = (id) => (dispatch, getState) => {
   if (isExpired(jwt)) return dispatch(logout())
   console.log('getShopOrders', id)
   request
-    .get(`http://grozeries.herokuapp.com/shops/${id}/orderlines`)
+    .get(`${baseUrl}/shops/${id}/orderlines`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
       console.log('gSO: ',response.body)
