@@ -1,6 +1,7 @@
 import * as request from 'superagent'
 import { logout } from '../auth/users'
 import { isExpired } from '../../jwt'
+import {baseUrl} from '../../constants'
 
 export const SET_ORDERLINE = 'SET_ORDERLINE'
 
@@ -14,7 +15,7 @@ export const updateOrderline = (id, status) => (dispatch, getState) => {
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .put(`http://grozeries.herokuapp.com/orderlines/${id}`)
+    .put(`${baseUrl}/orderlines/${id}`)
     .set('Authorization', `Bearer ${jwt}`)
     .send(status)
     .then(response => {

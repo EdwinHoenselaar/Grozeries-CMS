@@ -1,21 +1,34 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# VERSION 1.0 (BÈTA) - CMS (content management system) of Grozeries platform #
 
-In the project directory, you can run:
+The Development Team "Grozeries" of Class 25 welcomes you: may your coding adventure be a good one!
+## [🍎🍑Check out the deployed version here🥕🥦](https://grozeries-cms.netlify.com)
+
+## To Do's
+- Show current picture of product on the edit and create product forms
+- Make a form to change the shop info
+- Redirect after logout
+- Implement user rights (seller, admin and logistic)
+  - seller should only see his own shop, his own products and his own orderlines
+  - admin should be able to create a new store, promote a user to either seller or logistic
+  - logistic can see all products that need to be picked up, ordered by shop and ordered by customer
+- Validation: make sure that the users can only do valid inputs
+
+
+## Startup
+1. Install required dependencies using 'npm install'
+2. Check if you wish to run the client side on your local Grozeries server, or using the deployed version (in this version, deployed on Heroku) => this can easily be changed with the the baseUrl used, in the constants.js file (comment switch the baseUrl of line 1 or 2).
+
+After which you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
+This runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -37,32 +50,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Built With
+
+* react
+* redux
+* redux-thunk
+
+
+## Authors
+
+* **Albert Smit** - [Albert Smit](https://github.com/AlbertSmit)
+* **Edwin Hoenselaar** - [Edwin Hoenselaar](https://github.com/edwinhoenselaar)
+
+See also the list of [contributors](https://github.com/AlbertSmit/Grozeries-Client/graphs/contributors) who participated in this project.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
